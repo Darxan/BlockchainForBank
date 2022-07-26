@@ -1,0 +1,58 @@
+syntax = "proto3";
+package goan.goan;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "goan/params.proto";
+import "goan/custom_tx.proto";
+// this line is used by starport scaffolding # 1
+
+option go_package = "goan/x/goan/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/goan/goan/params";
+  }
+  // Queries a CustomTx by id.
+	rpc CustomTx(QueryGetCustomTxRequest) returns (QueryGetCustomTxResponse) {
+		option (google.api.http).get = "/goan/goan/custom_tx/{id}";
+	}
+
+	// Queries a list of CustomTx items.
+	rpc CustomTxAll(QueryAllCustomTxRequest) returns (QueryAllCustomTxResponse) {
+		option (google.api.http).get = "/goan/goan/custom_tx";
+	}
+
+// this line is used by starport scaffolding # 2
+}
+
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetCustomTxRequest {
+	uint64 id = 1;
+}
+
+message QueryGetCustomTxResponse {
+	CustomTx CustomTx = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllCustomTxRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllCustomTxResponse {
+	repeated CustomTx CustomTx = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+// this line is used by starport scaffolding # 3

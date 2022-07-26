@@ -1,0 +1,17 @@
+syntax = "proto3";
+package goan.goan;
+
+import "gogoproto/gogo.proto";
+import "goan/params.proto";
+import "goan/custom_tx.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "goan/x/goan/types";
+
+// GenesisState defines the goan module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  repeated CustomTx customTxList = 2 [(gogoproto.nullable) = false];
+  uint64 customTxCount = 3;
+  // this line is used by starport scaffolding # genesis/proto/state
+}

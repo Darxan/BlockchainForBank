@@ -1,0 +1,28 @@
+syntax = "proto3";
+package goan.goan;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "goan/x/goan/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc OddiyTx(MsgOddiyTx) returns (MsgOddiyTxResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgOddiyTx {
+  string creator = 1;
+  string sender = 2;
+  string receiver = 3;
+  string amount = 4;
+  string fee = 5;
+  string feeReceiver = 6;
+  string txType = 7;
+  string serviceName = 8;
+}
+
+message MsgOddiyTxResponse {
+}
+
+// this line is used by starport scaffolding # proto/tx/message
