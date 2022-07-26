@@ -50,3 +50,6 @@ curl https://get.ignite.com/username/goan@latest! | sudo bash
 - [Ignite CLI docs](https://docs.ignite.com)
 - [Cosmos SDK docs](https://docs.cosmos.network)
 - [Developer Chat](https://discord.gg/ignite)
+
+
+## goand tx goan oddiy-tx alice bob 100token 5token cosmos1xuj7zyv754hjnv55cgd2h7k4rrmdzfjg6e6z6a simple AnorBank --from alice
